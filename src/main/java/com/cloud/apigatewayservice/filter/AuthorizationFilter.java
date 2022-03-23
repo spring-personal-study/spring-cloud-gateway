@@ -20,11 +20,14 @@ import java.util.Objects;
 
 @Slf4j
 @Component
-@RequiredArgsConstructor
 public class AuthorizationFilter extends AbstractGatewayFilterFactory<AuthorizationFilter.Config> {
 
     private final Environment env;
 
+    public AuthorizationFilter(Environment env) {
+        super(Config.class);
+        this.env = env;
+    }
 
     // login -> needs token -> users (with token) -> header(include token)
     @Override
@@ -46,9 +49,6 @@ public class AuthorizationFilter extends AbstractGatewayFilterFactory<Authorizat
             if (!isJwtValid(jwt)) {
                 return onError(exchange, "JWT token is not valid", HttpStatus.UNAUTHORIZED);
             }
-
-
-
 
             return chain.filter(exchange);
         };
