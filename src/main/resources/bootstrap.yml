@@ -2,7 +2,7 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
-      name: ecommerce # config-service 가 참조하고 있는 파일의 이름 (ecommerce.yml). 기본값은 application.yml
+      name: user-service # config-service 가 참조하고 있는 파일의 이름 (user-service.yml). 기본값은 application.yml
 
-  profiles:
-    active: dev # profiles 설정시 ecommerce-dev.yml 을 참조하게 됨
+  #profiles:
+  #  active: dev # profiles 설정시 ecommerce-dev.yml 을 참조하게 됨
